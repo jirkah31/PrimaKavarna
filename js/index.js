@@ -68,4 +68,15 @@ overlay.on('click', function(){ //skrytí divu
 *		* * * WALLPAPER HEADER * * * 
 */
 
+var cover = $('.cover'),
+	wallpaper = $('.wallpaper');
+
+setInterval(function() {
+	wallpaper.children(':last').fadeOut(2000, function() { //mizení obrázku viditelného
+		$(this).prependTo(wallpaper);
+	});
+	wallpaper.children(':first').fadeIn(2000); //zviditelnění prvního
+}, 4000);
+
+
 })(jQuery);
