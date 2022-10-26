@@ -1,0 +1,34 @@
+footer {
+	background-color: #805F49;
+	display: flex;
+	justify-content: center;
+	padding: 50px;
+	color: aliceblue;
+	line-height: 2em;
+}
+
+footer .container {
+	display: flex;
+	justify-content: space-around;
+}
+
+footer a {
+	/* nastavujeme barvu takhle, protože vychází z defaultního nastavení prohlížeče a musíme to konkrétně přebít */
+	color: aliceblue;
+	text-decoration: none;
+}
+
+footer a:hover {
+	text-decoration: underline;
+}
+
+footer h3 {
+	font-size: 1.8em;
+	margin: 0.5em 0;
+}
+
+footer .otevreno table th {
+	text-align: right;
+	font-weight: bold;
+	padding: 0 1em;
+}

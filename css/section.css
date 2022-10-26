@@ -1,0 +1,500 @@
+section h1 {
+	font-size: 4em;
+	text-align: center;
+	margin: 0.4em 0;
+}
+
+section p {
+	font-size: 1.3em;
+	line-height: 1.5em;
+	text-indent: 3em;
+	text-align: justify;
+}
+
+section>.domu .oNas {
+	/* znaménko ">" znamená, že to je vztažené na jeho přímé dítě, aby nedošlo někde ke kolizi názvů */
+	display: flex;
+	justify-content: center;
+}
+
+section>.domu .oNas .boxy {
+	/* znaménko ">" znamená, že to je vztažené na jeho přímé dítě, aby nedošlo někde ke kolizi názvů */
+	display: flex;
+	justify-content: center;
+	justify-content: space-between;
+	margin-top: 3em;
+	margin-bottom: 3em;
+}
+
+section>.domu .oNas .boxy .karta {
+	flex-basis: 0;
+	/* nula v tomto parametru určí, že všechny boxy budou stejně široké */
+	text-align: center;
+}
+
+section>.domu .oNas .boxy .karta h2 {
+	display: inline-block;
+	margin: 1em 0;
+	padding-bottom: 0.5em;
+	font-size: 2em;
+	border-bottom: 1px solid black;
+}
+
+section>.domu .oNas .boxy .karta a {
+	text-decoration: none;
+	color: black;
+	border: 1px solid rgb(187, 187, 187);
+	padding: 1em 2em;
+	border-radius: 1em;
+	display: inline-block;
+	margin-top: 2em;
+}
+
+section>.domu .oNas .boxy .karta a:hover {
+	border: 1px solid rgb(0, 0, 0);
+	transition: all 0.5s ease;
+}
+
+section>.domu .oNas .boxy .karta a i {
+	transition: all 0.5s ease;
+	margin-left: 1em;
+}
+
+section>.domu .oNas .boxy .karta a:hover i {
+	transform: translateX(0.5em);
+
+}
+
+@media (max-width: 1000px) {
+	section>.domu .oNas .boxy {
+		flex-direction: column;
+		gap: 2em;
+	}
+
+	section>.domu .oNas .boxy .karta {
+		display: flex;
+		column-gap: 1em;
+	}
+
+	section>.domu .oNas .boxy .karta h2 {
+		margin: 0;
+	}
+}
+
+@media (max-width: 650px) {
+	section>.domu .oNas .boxy .karta {
+		display: block;
+	}
+
+	section>.domu .oNas .boxy .karta h2 {
+		margin: 1em;
+	}
+
+}
+
+/* DOMU akce */
+
+section>.domu .akce {
+	display: flex;
+
+}
+
+section>.domu .akce .levy {
+	justify-content: flex-end;
+	display: flex;
+	width: 50%;
+	background-color: #a0785d;
+	padding: 2em;
+	text-align: right;
+	color: aliceblue;
+}
+
+section>.domu .akce .levy .boxyAkce {
+	width: 500px;
+	display: flex;
+	flex-direction: column;
+	row-gap: 2em;
+}
+
+
+section>.domu .akce .levy .boxyAkce h2 {
+	font-size: 2em;
+	margin: 1em 0;
+
+}
+
+section>.domu .akce .pravy {
+	width: 50%;
+	background-image: url(../img/zrnka-kavy.jpg);
+	background-position: 50% 50%;
+	background-size: cover;
+	display: flex;
+}
+
+section>.domu .akce .pravy .lista {
+	background-color: rgba(160, 120, 93, 0.575);
+	width: 150px;
+}
+
+@media (max-width: 700px) {
+	section>.domu .akce .pravy {
+		width: 20%;
+	}
+
+	section>.domu .akce .levy {
+		width: 80%;
+	}
+
+	section>.domu .akce .pravy .lista {
+		display: none;
+	}
+}
+
+/* DOMU - tip */
+
+section>.domu .tip {
+	display: flex;
+	justify-content: center;
+	margin-top: 3em;
+	margin: 2em 0;
+}
+
+section>.domu .tip .container {
+	align-items: center;
+	display: flex;
+	column-gap: 50px;
+}
+
+section>.domu .tip .container .fotky {
+	display: flex;
+	column-gap: 50px;
+}
+
+section>.domu .tip .container .text h2 {
+	margin-bottom: 0.5em;
+	font-size: 3em;
+}
+
+section>.domu .tip .container .fotky img {
+	box-shadow: 15px 15px rgba(160, 120, 93);
+}
+
+@media (max-width: 1050px) {
+	section>.domu .tip .container {
+		flex-direction: column;
+		row-gap: 60px;
+		align-items: initial;
+
+	}
+
+	section>.domu .tip .container .fotky {
+		justify-content: space-evenly;
+	}
+
+	section>.domu .tip .container .fotky img {
+		width: 30vw;
+		height: 45v;
+	}
+}
+
+
+/* Nabídka DOMU */
+section>.nabidka .obsah {
+	display: flex;
+	justify-content: center;
+}
+
+section>.nabidka .obsah .boxy {
+	margin-top: 3em;
+}
+
+section>.nabidka .obsah .boxy .karta {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+section>.nabidka .obsah .boxy .karta .obrazek {
+	display: grid;
+	grid-template-columns: 1fr;
+	grid-template-rows: 1fr;
+	grid-template-areas: "obrazek";
+	align-items: center;
+	justify-items: center;
+}
+
+section>.nabidka .obsah .boxy .karta .obrazek h2 {
+	grid-area: obrazek;
+	z-index: 1;
+	color: white;
+	font-size: 4em;
+	text-shadow: 2px 2px 4px black;
+	text-transform: uppercase;
+	/* změní písmo na velká písmena */
+}
+
+section>.nabidka .obsah .boxy .karta .obrazek img {
+	grid-area: obrazek;
+}
+
+section>.nabidka .obsah .boxy .karta .cenik {
+	line-height: 1.5em;
+	font-size: 1.3em;
+}
+
+section>.nabidka .obsah .boxy .karta .cenik th {
+	text-align: right;
+	font-weight: bold;
+	padding-right: 2em;
+}
+
+section>.nabidka .obsah .boxy .karta .cenik td {
+	text-align: right;
+}
+
+@media (max-width: 1000px) {
+	section>.nabidka .obsah .boxy .karta {
+		flex-direction: column;
+		row-gap: 1em;
+	}
+}
+
+@media (max-width: 550px) {
+	section>.nabidka .obsah .boxy .karta .obrazek img {
+		width: 90vw;
+		height: 60vw;
+		opacity: 0.8;
+	}
+
+	section>.nabidka .obsah .boxy .karta .obrazek h2 {
+		font-size: 10vw;
+	}
+}
+
+
+/* GALERIE */
+
+section>.galerie .obsah {
+	display: flex;
+	justify-content: center;
+}
+
+section>.galerie .obsah .container .photos {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 20px;
+	margin-top: 3em;
+	margin-bottom: 3em;
+	justify-content: center;
+}
+
+
+/* REZERVACE */
+
+section>.rezervace .obsah {
+	display: flex;
+	justify-content: center;
+}
+
+section>.rezervace .obsah .kontakt {
+	margin-top: 2em;
+	text-align: center;
+	line-height: 150%;
+	font-size: 1.2em;
+}
+
+section>.rezervace .obsah .kontakt a {
+	text-decoration: none;
+	color: #a0785d;
+}
+
+section>.rezervace .obsah .kontakt a:hover {
+	text-decoration: underline;
+}
+
+section>.rezervace .obsah .formular {
+	display: flex;
+	justify-content: center;
+	margin-top: 3em;
+}
+
+/* toto umístí nápis do řádky formuláře */
+section>.rezervace .obsah .formular .radka {
+	position: relative;
+}
+
+section>.rezervace .obsah form input {
+	width: 100%;
+	font-size: 2em;
+	padding: 0.3em;
+	padding-top: 1em;
+	transition: all 0.4s ease;
+}
+
+section>.rezervace .obsah form input:placeholder-shown {
+	padding-top: 0.3em;
+}
+
+section>.rezervace .obsah form label {
+	position: absolute;
+	/* label dostal absolutní pozicování v divu "radka" */
+	top: 1.4em;
+	/* pozice label malýho vyplněno */
+	left: 15px;
+	color: #8a6e52;
+	font-weight: bold;
+	transition: all 0.4s ease;
+}
+
+section>.rezervace .obsah form {
+	width: 80%;
+}
+
+section>.rezervace .obsah form .prvek {
+	font-family: Arial, Helvetica, sans-serif;
+	width: 100%;
+	font-size: 1.5em;
+	padding: 0.3em;
+	padding-top: 1em;
+	transition: all 0.4s ease;
+	margin-top: 0.8em;
+}
+
+section>.rezervace .obsah form .prvek:placeholder-shown {
+	padding-top: 0.3em 0;
+}
+
+section>.rezervace .obsah form .prvek:placeholder-shown+label {
+	/* tohle říká, že když je palceholder zobrazen, tak label má toto nastavení */
+	font-size: 2em;
+	color: #848382;
+	top: 0.8em;
+	/* pozice label velkýho nevyplněno*/
+}
+
+section>.rezervace .obsah form button {
+	margin: 1em 0;
+	border-radius: 5px;
+	padding: 0.5em 1em;
+	font-size: 1.3em;
+	font-weight: bold;
+}
+
+/* KONTAKT */
+
+section>.kontakt .info {
+	display: flex;
+	justify-content: center;
+}
+
+section>.kontakt .info .informace {
+	display: flex;
+	justify-content: space-evenly;
+	line-height: 150%;
+	font-size: 1.2em;
+}
+
+section>.kontakt .info .informace h2 {
+	font-size: 2em;
+	margin: 0.5em 0;
+}
+
+section>.kontakt .info .informace a {
+	text-decoration: none;
+	color: #8d5936;
+}
+
+section>.kontakt .info .informace a:hover {
+	text-decoration: underline;
+}
+
+section>.kontakt .info .informace .otevreno th {
+	text-align: right;
+	font-weight: bold;
+	padding-right: 1em;
+}
+
+section>.kontakt .mapa {
+	margin-top: 3em;
+	margin-bottom: 3em;
+}
+
+section>.kontakt .obsah {
+	display: flex;
+	justify-content: center;
+	margin-top: 3em;
+	margin: 3em 0;
+}
+
+section>.kontakt .obsah h2 {
+	font-size: 2em;
+	text-align: center;
+}
+
+section>.kontakt .obsah .formular {
+	display: flex;
+	justify-content: center;
+	margin-top: 3em;
+}
+
+/* toto umístí nápis do řádky formuláře */
+section>.kontakt .obsah .formular .radka {
+	position: relative;
+}
+
+section>.kontakt .obsah form input {
+	width: 100%;
+	font-size: 2em;
+	padding: 0.3em;
+	padding-top: 1em;
+	transition: all 0.4s ease;
+}
+
+section>.kontakt .obsah form input:placeholder-shown {
+	padding-top: 0.3em;
+}
+
+section>.kontakt .obsah form label {
+	position: absolute;
+	/* label dostal absolutní pozicování v divu "radka" */
+	top: 1.4em;
+	/* pozice label malýho vyplněno */
+	left: 15px;
+	color: #8a6e52;
+	font-weight: bold;
+	transition: all 0.4s ease;
+}
+
+section>.kontakt .obsah form {
+	width: 80%;
+}
+
+section>.kontakt .obsah form .prvek {
+	font-family: Arial, Helvetica, sans-serif;
+	width: 100%;
+	font-size: 1.5em;
+	padding: 0.3em;
+	padding-top: 1em;
+	transition: all 0.4s ease;
+	margin-top: 0.8em;
+}
+
+section>.kontakt .obsah form .prvek:placeholder-shown {
+	padding-top: 0.3em 0;
+}
+
+section>.kontakt .obsah form .prvek:placeholder-shown+label {
+	/* tohle říká, že když je palceholder zobrazen, tak label má toto nastavení */
+	font-size: 2em;
+	color: #848382;
+	top: 0.8em;
+	/* pozice label velkýho nevyplněno*/
+}
+
+section>.kontakt .obsah form button {
+	margin: 1em 0;
+	border-radius: 5px;
+	padding: 0.5em 1em;
+	font-size: 1.3em;
+	font-weight: bold;
+}
