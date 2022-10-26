@@ -68,15 +68,20 @@ overlay.on('click', function(){ //skrytí divu
 *		* * * WALLPAPER HEADER * * * 
 */
 
+config = {
+	fadeSpeed: 2000,
+	delayTime: 4000,
+};
+
 var cover = $('.cover'),
 	wallpaper = $('.wallpaper');
 
 setInterval(function() {
-	wallpaper.children(':last').fadeOut(2000, function() { //mizení obrázku viditelného
+	wallpaper.children(':last').fadeOut(window.config.fadeSpeed, function() { //mizení obrázku viditelného
 		$(this).prependTo(wallpaper);
 	});
-	wallpaper.children(':first').fadeIn(2000); //zviditelnění prvního
-}, 4000);
+	wallpaper.children(':first').fadeIn(window.config.fadeSpeed); //zviditelnění prvního
+}, window.config.delayTime);
 
 
 })(jQuery);
