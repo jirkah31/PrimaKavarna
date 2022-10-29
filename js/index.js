@@ -1,3 +1,22 @@
+/* 
+*		* * * WALLPAPER HEADER * * * 
+*/
+
+config = {
+	fadeSpeed: 2000,
+	delayTime: 4000,
+};
+
+var cover = $('.cover'),
+	wallpaper = $('.wallpaper');
+
+setInterval(function () {
+	wallpaper.children(':last').fadeOut(window.config.fadeSpeed, function () { //mizení obrázku viditelného
+		$(this).prependTo(wallpaper);
+	});
+	wallpaper.children(':first').fadeIn(window.config.fadeSpeed); //zviditelnění prvního
+}, window.config.delayTime);
+
 /*
 *		*** BACK TO TOP ***
 */
@@ -26,62 +45,84 @@
 	});
 
 
+	// lightbox animace
+	var photos = $('.photos');
+
+	photos.find('img').css({
+		opacity: .8,
+	}).on('mouseenter mouseleave', function (event) {
+
+		if (event.type == 'mouseenter') {
+			$(this).stop().fadeTo(500, 1);
+		}
+		else if (event.type == 'mouseleave') {
+			$(this).stop().fadeTo(500, 0.8); //metoda stop() zabrání stekování animací opacity
+		};
+	});
+
 	/* 
 	*		*** GALERY *** lightbox
 	*/
+	var overlay = $('<div/>', { id: 'overlay' }).appendTo('body').hide(), //vytvoření elementu pro img
+		leftToggle = $('<div/>', { 	class: 'toggle', 
+									id: 'leftToggle',
+									html: '<i class="fa-solid fa-caret-left arrow"></i>' }).hide(),
+		rightToggle = $('<div/>', { class: 'toggle', 
+									id: 'rightToggle',
+									html: '<i class="fa-solid fa-caret-right arrow"></i>' }).hide(),
+		arrayPhotos = photos.find('a').toArray();
 
-var photos = $('.photos');
+	photos.find('a').on('click', function (event) { //zobrazení 'overlay' na click
+		var href = $(this).attr('href'), //odchycení 'href' podle toho na jaký obrázek kliknu: metoda SETter
+			image = $('<img>', { class: 'active', src: href }), // vytvoření img
+			i = $(this).index(); //index v poli obrázků
 
-photos.find('img').css({
-	opacity: .8,
-}).on('mouseenter mouseleave', function(event){
+		overlay.html(image).show();
+		leftToggle.appendTo('body').show();
+		rightToggle.appendTo('body').show();
+		overlay.show();
+		event.preventDefault();
 
-	if(event.type == 'mouseenter'){
-		$(this).stop().fadeTo(500, 1);
-	} 
-	else if (event.type == 'mouseleave') {
-		$(this).stop().fadeTo(500, 0.8); //metoda stop() zabrání stekování animací opacity
-	}});
+		$(document).on('keydown', function (event) {
+			if (event.which == 27) { //stalčení ESC
+				overlay.hide();
+			};
+		});
 
-var overlay = $('<div/>', {id: 'overlay'}).appendTo('body').hide(); //vytvoření elementu pro img
 
-photos.find('a').on('click', function(event) { //zobrazení 'overlay' na click
-	var href = $(this).attr('href'), //odchycení 'href' podle toho na jaký obrázek kliknu
-		image = $('<img>',{src: href}); // vytvoření img
+	/* 
+	*	* * * LIGHTBOX toggle
+	*/
+		leftToggle.on('click', function () {
+			if (i == 0) {
+				i = arrayPhotos.length - 1;
+			} else {
+				i--;
+			};
 
-	overlay.html(image).show();
-	overlay.show(); 
-	event.preventDefault();
+			href = $(arrayPhotos[i]).attr('href');
+			image = $('<img>', { class: 'active', src: href });
+			overlay.html(image).show();
+		});
 
-	$(document).on('keydown', function(event){
-		if(event.which == 27) { //stalčení EXC
-			overlay.hide();
-		};
+		rightToggle.on('click', function () {
+			if (i == (arrayPhotos.length - 1)) {
+				i = 0;
+			} else {
+				i++;
+			};
+
+			href = $(arrayPhotos[i]).attr('href');
+			image = $('<img>', { class: 'active', src: href });
+			overlay.html(image).show();
+		});
+
 	});
-});
 
-overlay.on('click', function(){ //skrytí divu
-	$(this).hide();
-});
-
-/* 
-*		* * * WALLPAPER HEADER * * * 
-*/
-
-config = {
-	fadeSpeed: 2000,
-	delayTime: 4000,
-};
-
-var cover = $('.cover'),
-	wallpaper = $('.wallpaper');
-
-setInterval(function() {
-	wallpaper.children(':last').fadeOut(window.config.fadeSpeed, function() { //mizení obrázku viditelného
-		$(this).prependTo(wallpaper);
+	overlay.on('click', function () { //skrytí divu
+		$(this).hide();
+		leftToggle.hide();
+		rightToggle.hide();
 	});
-	wallpaper.children(':first').fadeIn(window.config.fadeSpeed); //zviditelnění prvního
-}, window.config.delayTime);
-
 
 })(jQuery);
