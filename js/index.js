@@ -64,12 +64,16 @@ setInterval(function () {
 	*		*** GALERY *** lightbox
 	*/
 	var overlay = $('<div/>', { id: 'overlay' }).appendTo('body').hide(), //vytvoření elementu pro img
-		leftToggle = $('<div/>', { 	class: 'toggle', 
-									id: 'leftToggle',
-									html: '<i class="fa-solid fa-caret-left arrow"></i>' }).hide(),
-		rightToggle = $('<div/>', { class: 'toggle', 
-									id: 'rightToggle',
-									html: '<i class="fa-solid fa-caret-right arrow"></i>' }).hide(),
+		leftToggle = $('<div/>', {
+			class: 'toggle',
+			id: 'leftToggle',
+			html: '<i class="fa-solid fa-caret-left arrow"></i>'
+		}).hide(),
+		rightToggle = $('<div/>', {
+			class: 'toggle',
+			id: 'rightToggle',
+			html: '<i class="fa-solid fa-caret-right arrow"></i>'
+		}).hide(),
 		arrayPhotos = photos.find('a').toArray();
 
 	photos.find('a').on('click', function (event) { //zobrazení 'overlay' na click
@@ -90,9 +94,9 @@ setInterval(function () {
 		});
 
 
-	/* 
-	*	* * * LIGHTBOX toggle
-	*/
+		/* 
+		*	* * * LIGHTBOX toggle
+		*/
 		leftToggle.on('click', function () {
 			if (i == 0) {
 				i = arrayPhotos.length - 1;
@@ -124,5 +128,17 @@ setInterval(function () {
 		leftToggle.hide();
 		rightToggle.hide();
 	});
+
+
+	/* 
+	*		* * * h1 IN MOVE
+	*/
+	$('.headline').css({ position: 'relative', left: -2000 })
+		.animate({ left: 0 }, 1500);
+
+	$('.comment').css({ position: 'relative', right: -2000 })
+		.animate({ right: 0 }, 1500);
+
+
 
 })(jQuery);
