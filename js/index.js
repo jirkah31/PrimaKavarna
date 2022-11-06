@@ -61,7 +61,7 @@ setInterval(function () {
 	});
 
 	/* 
-	*		*** GALERY *** lightbox
+	*		* * * GALERY lightbox * * * 
 	*/
 	var overlay = $('<div/>', { id: 'overlay' }).appendTo('body').hide(), //vytvoření elementu pro img
 		leftToggle = $('<div/>', {
@@ -95,7 +95,7 @@ setInterval(function () {
 
 
 		/* 
-		*	* * * LIGHTBOX toggle
+		*	* * * LIGHTBOX toggle * * *
 		*/
 		leftToggle.on('click', function () {
 			if (i == 0) {
@@ -139,6 +139,42 @@ setInterval(function () {
 	$('.comment').css({ position: 'relative', right: -2000 })
 		.animate({ right: 0 }, 1500);
 
+	/* 
+	*		* * * GALERIE V2 * * *
+	*/
+	var list = $('.control-menu').find('li'),
+		menu = $('.control-menu').find('a'),
+		photos = $('.photo-set');
+
+	photos.hide();
+
+	var selected = $('.control-menu').find('.selected'),
+		selectedPhoto;
+
+	function showPhotos(selected) {
+
+		if (selected.length) {
+			var id = selected.find('a').attr('href');
+			selectedPhoto = $(id);
+		};
+
+		var newPhotos = selectedPhoto.length ? selectedPhoto : selectedPhoto.eq(0);
+		photos.not( newPhotos ).hide();
+		newPhotos.fadeIn();
+	};
+
+	showPhotos(selected);
+
+	
+	menu.on('click', function (event) {
+		var li = $(this).parent();
+		li.addClass('selected')
+		  .siblings().removeClass('selected');
+
+		showPhotos(li);
+
+		event.preventDefault();
+	});
 
 
 })(jQuery);

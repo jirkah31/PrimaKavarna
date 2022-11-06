@@ -283,9 +283,51 @@ section>.galerie .obsah .container .photos {
 	display: flex;
 	flex-wrap: wrap;
 	gap: 20px;
-	margin-top: 3em;
 	margin-bottom: 3em;
 	justify-content: center;
+}
+
+section>.galerie .obsah .container .photo-set {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: center;
+	gap: 20px;
+}
+
+/* GALERIE V2 */
+.control-menu {
+	font-family: "Kaushan Script";
+	font-size: 30px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin: 20px 0px 10px 0px;
+}
+
+.control-menu li {
+	display: flex;
+	text-align: center;
+}
+
+.control-menu a {
+	width: 120px;
+	padding: 7px 0;
+	border-radius: 10px;
+	margin: 0px 10px;
+	text-decoration: none;
+	color: black;
+	background-color: #8a6e5237;
+}
+
+.control-menu a:hover {
+	background-color: #8a6e527c;
+}
+
+.selected {
+	width: 120px;
+	background-color: #8a6e52d9;
+	border-radius: 10px;
 }
 
 
