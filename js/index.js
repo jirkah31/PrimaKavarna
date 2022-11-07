@@ -176,5 +176,30 @@ setInterval(function () {
 		event.preventDefault();
 	});
 
+	// Sortování seznamu tlačítek
+	var controlMenu = $('.control-menu');
+
+	controlMenu.sortable({
+		axis: 'x',
+		cursor: 'move',
+		update: function(event, ui) {
+			var item = ui.item,
+			order = controlMenu.sortable('serialize');
+
+			$.ajax({
+				url: 'souborSeScriptemNaUlozeni.php',
+				type: 'GET',
+				data: order
+			}).then(function(data){
+				console.log('úspěšně uloženo na serveru');
+			}).always(function(data){
+				//toto by normálně bylo v .then a bliknutí by uživateli potvrzovalo uložení
+				//pro zkoušku jsem to vložil sem, protože nejsem na serveru
+				item.find('.list').delay(250).effect('highlight');
+			}).faile(function(){
+				//kód v případě nastalé chyby
+			});
+		}
+	});
 
 })(jQuery);
